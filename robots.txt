@@ -1,0 +1,5 @@
+User-Agent: Googlebot
+allow: /*.png
+allow: /*.js
+allow: /*.css
+allow: /*.jpg

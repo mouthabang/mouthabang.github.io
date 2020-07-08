@@ -1,25 +1,34 @@
 (function($){"use strict";function portfolio_init(){var portfolio_grid=$('#portfolio_grid'),portfolio_filter=$('#portfolio_filters');if(portfolio_grid){portfolio_grid.shuffle({speed:450,itemSelector:'figure'});$('.site-main-menu').on("click","a",function(e){portfolio_grid.shuffle('update');});portfolio_filter.on("click",".filter",function(e){portfolio_grid.shuffle('update');e.preventDefault();$('#portfolio_filters .filter').parent().removeClass('active');$(this).parent().addClass('active');portfolio_grid.shuffle('shuffle',$(this).attr('data-group'));});}}
 
 $(function(){$('#contact-form').validator();
+
 $('#contact-form').on('submit',function(e) {
-    if(!e.isDefaultPrevented()) {
-$.ajax(
-    {
-    type: "post",
-    url: "../data/mail.php",
-    data:$(this).serialize(),success:function(data) {
-    var messageAlert='alert-'+data.type;
-    var messageText=data.message;
-    var alertBox='<div class="alert '+messageAlert+' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'+messageText+'</div>';
-    if(messageAlert&&messageText) {
-        $('#contact-form').find('.messages').html(alertBox);
-        $('#contact-form')[0].reset();
-    }
-    },
-    error: function(xhr, status, error) {
-        console.log(xhr.responseText);
-    }});
-    return false;}});
+          e.preventDefault();
+          var $recaptcha = $('#contact-form').find('.g-recaptcha');
+          if(grecaptcha.getResponse().length !== 0) {
+            $recaptcha.removeClass('invalid');
+            $.ajax(
+                {
+                type: "post",
+                url: "../data/mail.php",
+                data:$(this).serialize(),success:function(data) {                 
+                    $('#message_sent').fadeIn('slow', function(){
+                        $("#contact-form")[0].reset();
+                        grecaptcha.reset();
+                        $('#message_sent').delay(5000).fadeOut(); 
+                     });
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }});
+          } else {
+              $recaptcha.addClass('invalid');
+              setTimeout(function(){
+                  $recaptcha.removeClass('invalid');
+              },2000);
+          }
+});
+
 });function mobileMenuHide(){var windowWidth=$(window).width();if(windowWidth<1024){$('#site_header').addClass('mobile-menu-hide');}}
 function customScroll(){var windowWidth=$(window).width();if(windowWidth>991){$(".pt-page").mCustomScrollbar({scrollInertia:8});$("#site_header").mCustomScrollbar({scrollInertia:8});}else{$(".pt-page").mCustomScrollbar('destroy');$("#site_header").mCustomScrollbar('destroy');}}
 $(window).on('load',function(){$(".preloader").fadeOut("slow");var ptPage=$('.subpages');if(ptPage[0]){PageTransitions.init({menu:'ul.site-main-menu',});}

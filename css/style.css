@@ -5,3 +5,30 @@
 .adjust-alignment li {
     padding-bottom: 5px;
 }
+
+.business-logo {
+     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:40%;
+}
+.java-logo {
+  display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+/* Recaptcha */
+.g-recaptcha { display: inline-block; }
+.g-recaptcha.invalid { -moz-animation: recaptchaError 2s both; -webkit-animation: recaptchaError 2s both; animation: recaptchaError 2s both; }
+
+
+@-moz-keyframes recaptchaError { 0% { -moz-box-shadow: none; box-shadow: none; }
+  50% { -moz-box-shadow: 0 0 20px 0 #e15757; box-shadow: 0 0 20px 0 #e15757; }
+  0% { -moz-box-shadow: none; box-shadow: none; } }
+@-webkit-keyframes recaptchaError { 0% { -webkit-box-shadow: none; box-shadow: none; }
+  50% { -webkit-box-shadow: 0 0 20px 0 #e15757; box-shadow: 0 0 20px 0 #e15757; }
+  0% { -webkit-box-shadow: none; box-shadow: none; } }
+@keyframes recaptchaError { 0% { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+  50% { -moz-box-shadow: 0 0 20px 0 #e15757; -webkit-box-shadow: 0 0 20px 0 #e15757; box-shadow: 0 0 20px 0 #e15757; }
+  0% { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; } }

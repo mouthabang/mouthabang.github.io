@@ -1,25 +1,37 @@
-<?php 
-error_reporting(-1);
-ini_set('display_errors', 'On');
-set_error_handler("var_dump");
+<?php
 
-            $name = $_POST['form_name'];
-            $email = $_POST['form_email'];
-            $message = $_POST['form_message'];
-            $formcontent="From: $name \n Message: $message";
-            $recipient = "mouthabang@gmail.com";
-            $subject = "Portfolio Site";
+   $mail_to = 'mouthabang@yahoo.com';
 
-            $mailheader = array("From: $recipient",
-                        "Reply-To: replyto@example.com",
-                        "X-Mailer: PHP/" . PHP_VERSION
-                            );
-            $mailheader = implode("\r\n", $mailheader);
+   $subject = 'Portfolio Viewer Enquiry:';
+   $contactName = $_POST['form_name'];
+   $message = $_POST['form_message'];
+   $emailFrom = $_POST['form_email'];
 
-              
-            if( mail($recipient, $subject, $formcontent, $mailheader)) {
-                echo "Message accepted";
-            } else {
-                echo "Error: Message not accepted";
-            }
+   if ( empty($contactName) OR !filter_var($emailFrom, FILTER_VALIDATE_EMAIL) OR empty($message)) 
+   {
+        http_response_code(400);
+        echo "Please complete the form and try again.";
+        exit;
+   } else
+   {
+        # Mail Content
+        $content = "Name: $contactName\n";
+        $content .= "Email: $emailFrom\n\n";
+        $content .= "Message:\n$message\n";
+
+        # email headers
+        $headers = "From: $contactName;";
+
+        # Send the email
+        $success = mail($mail_to, $subject, $content, $headers);
+
+        if($success) {
+            http_response_code(200);
+            echo "Thank you! Your message has been sent.";
+        } else {
+            http_response_code(500);
+            echo "Oops! Something went wrong, we couldn't send your message.";
+        }
+    }
+
 ?>

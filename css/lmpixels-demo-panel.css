@@ -207,7 +207,7 @@ a.lm-demo-panel-switcher.right {
 
 .lm-demo-panel .current-layout .preview.layout,
 .lm-demo-panel .layout-switcher:hover .preview.layout {
-    border-color: #ff724c;
+    border-color: #337ab7;;
 }
 
 .lm-demo-panel .t-style {
@@ -219,7 +219,7 @@ a.lm-demo-panel-switcher.right {
     text-align: center;
 }
 
-.color-1 { background: #ff724c; }
+.color-1 { background: #337ab7;; }
 .color-2 { background: #4d91de; }
 .color-3 { background: #8bcf00; }
 .color-4 { background: #fd9129; }
@@ -227,10 +227,10 @@ a.lm-demo-panel-switcher.right {
 .color-6 { background: #9161e0; }
 
 .preview.h-color-1 { background: #fff; }
-.preview.h-color-2 { background: #ff724c; }
+.preview.h-color-2 { background: #337ab7;; }
 .preview.h-color-3 { background: #222; }
 
-.panel-color-red .preview.h-color-2 { background: #ff724c; }
+.panel-color-red .preview.h-color-2 { background: #337ab7;; }
 .panel-color-blue .preview.h-color-2 { background: #4d91de; }
 .panel-color-green .preview.h-color-2 { background: #8bcf00; }
 .panel-color-orange .preview.h-color-2 { background: #fd9129; }
