@@ -62,7 +62,7 @@ if (Detect::isComputer() || Detect::isTablet())
                     <!-- Heading Block -->
                     <div class="heading-block margin-bottom-80">
                         <h3 class="wow fadeInUp margin-bottom-50" data-wow-delay="0.4s">About Us</h3>
-                        <hr class="wow fadeInLeft" data-wow-delay="0.4s">
+                      <hr class="wow fadeInLeft" data-wow-delay="0.4s">
 
                     </div>
                 </div>
